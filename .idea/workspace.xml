@@ -1,7 +1,47 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="d4d24805-b3f7-4d35-a358-a3e12e3d01e7" name="Default Changelist" comment="" />
+    <list default="true" id="d4d24805-b3f7-4d35-a358-a3e12e3d01e7" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/Views/Templates/Home.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Views/Templates/MainLayout.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/codeWizard.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/codeWizard.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Controller.py" beforeDir="false" afterPath="$PROJECT_DIR$/Controller.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Views/Resources/css/bootstrap-grid.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Views/Resources/css/bootstrap-grid.css.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Views/Resources/css/bootstrap-grid.min.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Views/Resources/css/bootstrap-grid.min.css.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Views/Resources/css/bootstrap-material-design.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Views/Resources/css/bootstrap-material-design.css.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Views/Resources/css/bootstrap-material-design.min.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Views/Resources/css/bootstrap-material-design.min.css.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Views/Resources/css/bootstrap-reboot.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Views/Resources/css/bootstrap-reboot.css.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Views/Resources/css/bootstrap-reboot.min.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Views/Resources/css/bootstrap-reboot.min.css.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Views/Resources/css/bootstrap.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Views/Resources/css/bootstrap.css.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Views/Resources/css/bootstrap.min.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Views/Resources/css/bootstrap.min.css.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Views/Resources/css/ripples.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Views/Resources/css/ripples.css.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Views/Resources/css/ripples.min.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Views/Resources/css/ripples.min.css.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Views/Resources/js/bootstrap.bundle.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Views/Resources/js/bootstrap.bundle.js.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Views/Resources/js/bootstrap.bundle.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Views/Resources/js/bootstrap.bundle.min.js.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Views/Resources/js/bootstrap.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Views/Resources/js/bootstrap.js.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Views/Resources/js/bootstrap.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Views/Resources/js/bootstrap.min.js.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Views/Resources/js/material.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Views/Resources/js/material.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Views/Resources/js/material.min.js.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Views/Resources/js/ripples.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Views/Resources/js/ripples.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Views/Resources/js/ripples.min.js.map" beforeDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -12,10 +52,21 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Python Script" />
+        <option value="HTML File" />
       </list>
     </option>
   </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
   <component name="ProjectId" id="1Q5fQR9iZJQ1NMiXwlPGLxWhDZe" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="DefaultHtmlFileTemplate" value="HTML File" />
+    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
+  </component>
   <component name="RunDashboard">
     <option name="ruleStates">
       <list>
@@ -68,6 +119,19 @@
       <updated>1567065360957</updated>
     </task>
     <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
