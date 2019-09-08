@@ -1,6 +1,5 @@
 
 $(document).ready(function(){
-
     console.log("loaded");
     $.material.init();
     console.log("loaded");
@@ -9,8 +8,8 @@ $(document).ready(function(){
 
         var form = $("#register-form").serialize();
         $.ajax({
-            url: '/postregistration',
-            Type: 'POST',
+            url: '/post',
+            type: 'POST',
             data: form,
             success: function(response){
                 console.log(response);

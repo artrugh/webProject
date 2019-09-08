@@ -2,11 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d4d24805-b3f7-4d35-a358-a3e12e3d01e7" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/Models/RegisterModel.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Models/__init__.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Controller.py" beforeDir="false" afterPath="$PROJECT_DIR$/Controller.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Views/Templates/MainLayout.html" beforeDir="false" afterPath="$PROJECT_DIR$/Views/Templates/MainLayout.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Views/Templates/Register.html" beforeDir="false" afterPath="$PROJECT_DIR$/Views/Templates/Register.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/js/jquery-migrate-3.1.0.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/js/jquery-migrate-3.1.0.min.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/static/js/scripty.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/js/scripty.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -18,8 +18,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Python Script" />
         <option value="HTML File" />
+        <option value="Python Script" />
       </list>
     </option>
   </component>
@@ -34,6 +34,13 @@
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="restartRequiresConfirmation" value="false" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
+  </component>
+  <component name="PyConsoleOptionsProvider">
+    <option name="myPythonConsoleState">
+      <console-settings>
+        <option name="useSoftWraps" value="true" />
+      </console-settings>
+    </option>
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">

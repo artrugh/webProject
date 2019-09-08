@@ -1,9 +1,10 @@
 import web
+from Models import RegisterModel
 
 urls = (
     "/", "Home",
     "/register", "Register",
-    "/postregistration", "PostRegistration"
+    "/post", "PostRegistration",
 )
 render = web.template.render("Views/Templates", base="MainLayout")
 app = web.application(urls, globals())
@@ -24,6 +25,8 @@ class Register:
 class PostRegistration:
     def POST(self):
         data = web.input()
+        reg_model = RegisterModel.RegisterModelCls()
+        reg_model.insert_user(data)
         return data.username
 
 
