@@ -4,6 +4,7 @@ from Models import RegisterModel
 urls = (
     "/", "Home",
     "/register", "Register",
+    "/login", "Login",
     "/post", "PostRegistration",
 )
 render = web.template.render("Views/Templates", base="MainLayout")
@@ -20,6 +21,11 @@ class Home:
 class Register:
     def GET(self):
         return render.Register()
+
+
+class Login:
+    def GET(self):
+        return render.Login()
 
 
 class PostRegistration:
