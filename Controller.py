@@ -2,15 +2,21 @@ import web
 from Models import RegisterModel
 from Models import LogiModel
 
+web.config.debug = False
+
 urls = (
     "/", "Home",
     "/register", "Register",
     "/login", "Login",
+    "/logout", "Logout",
     "/post", "PostRegistration",
     "/check-login", "CheckLogin",
 )
-render = web.template.render("Views/Templates", base="MainLayout")
 app = web.application(urls, globals())
+session = web.session.Session(app, web.session.DiskStore("sessions"), initializer={'user':'none'})
+session_data = session._initializer
+
+render = web.template.render("Views/Templates", base="MainLayout", globals={'session': session_data, 'current_user': session_data["user"]})
 
 
 # Classes/routes
@@ -45,9 +51,16 @@ class CheckLogin:
         isCorrect = login.check_user(data)
 
         if isCorrect:
+            session_data["user"] = isCorrect
             return isCorrect
 
         return "error"
+
+
+class Logout:
+    def GET(self):
+        session.kill()
+        return "success"
 
 
 if __name__ == "__main__":

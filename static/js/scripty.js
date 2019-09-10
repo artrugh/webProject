@@ -30,6 +30,7 @@ $(document).ready(function(){
                     alert("could not login");
                 }else{
                     console.log("Logged in as: ", res);
+                    window.location.href = "/";
                 }
             }
         });
