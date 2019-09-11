@@ -1,6 +1,7 @@
 import web
 from Models import RegisterModel
 from Models import LogiModel
+from Models import Posts
 
 web.config.debug = False
 
@@ -11,6 +12,7 @@ urls = (
     "/logout", "Logout",
     "/post", "PostRegistration",
     "/check-login", "CheckLogin",
+    "/post-activity", "PostActivity",
 )
 app = web.application(urls, globals())
 session = web.session.Session(app, web.session.DiskStore("sessions"), initializer={'user': None})
@@ -23,6 +25,14 @@ render = web.template.render("Views/Templates", base="MainLayout", globals={'ses
 
 class Home:
     def GET(self):
+        data = type('obj', (object,), {"username": "qazi1", "password": "doubledoor"})
+
+        login = LogiModel.LoginModel()
+        isCorrect = login.check_user(data)
+
+        if isCorrect:
+            session_data["user"] = isCorrect
+
         return render.Home()
 
 
@@ -55,6 +65,16 @@ class CheckLogin:
             return isCorrect
 
         return "error"
+
+
+class PostActivity:
+    def POST(self):
+        data = web.input()
+        data.username = session_data['user']['username']
+
+        post_model = Posts.Posts()
+        post_model.insert_post(data)
+        return "success"
 
 
 class Logout:
