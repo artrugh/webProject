@@ -33,7 +33,10 @@ class Home:
         if isCorrect:
             session_data["user"] = isCorrect
 
-        return render.Home()
+        post_model = Posts.Posts()
+        posts = post_model.get_all_posts()
+
+        return render.Home(posts)
 
 
 class Register:

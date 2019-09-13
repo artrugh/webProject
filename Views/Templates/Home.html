@@ -1,7 +1,9 @@
+$def with (posts)
 
-$if session['user'] == None:
-     <h1>Hello codewizard</h1>
-  $else:
+
+    $if session['user'] == None:
+       <h1>Hello codewizard</h1>
+    $else:
     <!-- <h1>Hello $session['user']['name']</h1>-->
     <div class="row">
       <ul class="sidebar col-md-4">
@@ -22,13 +24,16 @@ $if session['user'] == None:
             <button type="submit" id="post-button" class="btn btn-info btn-raised waves-effect"><span class="mdi mdi-send"></span>Post</button>
           </form>
         </div>
+
+        $for post in posts:
+
        <div class="post-card">
          <div class="header">
            <div class="avatar">
-             <a href="/profile">Nick Germaine</a>
+             <a href="/profile">$post['user']['name']</a>
            </div>
            <div class="content">
-             test write something
+             $post['content']
            </div>
            <div class="footer">
              <button class="btn btn-round waves-effect btn-default btn-raised btn-like"><span class="mdi mdi-thumb-up-outline"></span></button>
