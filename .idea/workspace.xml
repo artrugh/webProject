@@ -3,9 +3,15 @@
   <component name="ChangeListManager">
     <list default="true" id="d4d24805-b3f7-4d35-a358-a3e12e3d01e7" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Controller.py" beforeDir="false" afterPath="$PROJECT_DIR$/Controller.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Models/Posts.py" beforeDir="false" afterPath="$PROJECT_DIR$/Models/Posts.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Views/Templates/Home.html" beforeDir="false" afterPath="$PROJECT_DIR$/Views/Templates/Home.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sessions/16f08f022ce4a6f15c9e0c2394226d4fe075fc84" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sessions/387025651bc6108a397b43b667bfc939e708c807" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sessions/409278880c328ed8678a414bab1f9104958a5d57" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sessions/5397efafc25a0a0b1dcf9392e426b8a1ef62ce56" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sessions/545dd395f5f25dae5d6bfb0ebc187bf204b326e5" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sessions/6823c6ad2cc02ea17834bc7370cd2618010fdeb6" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sessions/6f4c2f662dddba5b321a435c650d7a1e297e3fd3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sessions/9d329e7369581afaa274023665c3ddb1f1dfdf25" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
