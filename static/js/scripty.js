@@ -11,7 +11,10 @@ $(document).ready(function () {
       type: "POST",
       data: form,
       success: function (response) {
-        console.log(response);
+        if (response === "error") alert("missed user data");
+        else {
+          window.location.href = "/";
+        }
       },
     });
   });

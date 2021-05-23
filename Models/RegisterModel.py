@@ -10,6 +10,10 @@ class RegisterModelCls:
 
     def insert_user(self, data):
 
+        if data['username'] == "" or data['password'] == "" or data['email'] == "":
+            print("missed data")
+            return 'error'
+
         hashed = bcrypt.hashpw(data.password.encode(), bcrypt.gensalt())
 
         id = self.Users.insert(
