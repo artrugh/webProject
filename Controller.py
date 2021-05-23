@@ -30,14 +30,15 @@ render = web.template.render("Views/Templates", base="MainLayout", globals={
 
 class Home:
     def GET(self):
-        # data = type('obj', (object,), {
-        #             "username": "qazi1", "password": "doubledoor"})
 
-        # login = LoginModel.LoginModel()
-        # isCorrect = login.check_user(data)
+        # auto-login
+        data = {"email": "nick@nick.com", "password": "nick"}
 
-        # if isCorrect:
-        #     session_data["user"] = isCorrect
+        login = LoginModel.LoginModel()
+        user = login.check_user(data)
+
+        if user:
+            session_data["user"] = user
 
         post_model = Posts.Posts()
         posts = post_model.get_all_posts()
@@ -69,7 +70,6 @@ class ControllerLogin:
         data = web.input()
         login = LoginModel.LoginModel()
         user = login.check_user(data)
-        print('user', user['username'])
 
         if user == False:
             return "error"

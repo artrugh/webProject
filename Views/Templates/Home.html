@@ -4,7 +4,7 @@ $def with (posts)
     $if session['user'] == None:
        <h1>Hello codewizard</h1>
     $else:
-    <!-- <h1>Hello $session['user']['name']</h1>-->
+    <!-- <h1>Hello $session['user']['username']</h1>-->
     <div class="row">
        <ul class="sidebar col-md-4">
         <li class="active list-unstyled"><a href="#"><span class="mdi mdi-home"></span>Home Feed</a></li>
@@ -20,7 +20,7 @@ $def with (posts)
       <div class="col-md-6">
         <div class="post-box">
           <form id="post-activity">
-            <textarea name="content" class="post-input" placeholder="What's new, $session['user']['name']?"></textarea>
+            <textarea name="content" class="post-input" placeholder="What's new, $session['user']['username']?"></textarea>
             <button type="submit" id="post-button" class="btn btn-info btn-raised waves-effect"><span class="mdi mdi-send"></span>Post</button>
           </form>
         </div>
