@@ -1,16 +1,19 @@
 import web
-from Models import RegisterModel
+from Models import SignupModel
 from Models import LogiModel
 from Models import Posts
 
 web.config.debug = False
 
 urls = (
+    # views
     "/", "Home",
-    "/register", "Register",
+    "/signup", "SignUp",
     "/login", "Login",
     "/logout", "Logout",
-    "/signup", "SignUp",
+
+    # apis
+    "/sumbmit-signup", "SubmitSignUp",
     "/check-login", "CheckLogin",
     "/post-activity", "PostActivity",
 )
@@ -42,9 +45,9 @@ class Home:
         return render.Home(posts)
 
 
-class Register:
+class SignUp:
     def GET(self):
-        return render.Register()
+        return render.SignUp()
 
 
 class Login:
@@ -52,10 +55,10 @@ class Login:
         return render.Login()
 
 
-class SignUp:
+class SubmitSignUp:
     def POST(self):
         data = web.input()
-        reg_model = RegisterModel.RegisterModelCls()
+        reg_model = SignupModel.SignupModelCls()
         res = reg_model.insert_user(data)
         if res:
             return res

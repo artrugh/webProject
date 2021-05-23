@@ -2,7 +2,7 @@ from pymongo import MongoClient
 import bcrypt
 
 
-class RegisterModelCls:
+class SignupModelCls:
     def __init__(self):
         self.client = MongoClient()
         self.db = self.client.codeWizard

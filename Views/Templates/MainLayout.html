@@ -41,7 +41,7 @@ $var js: static/js/jquery-3.6.0.min.js static/js/bootstrap.min.js static/js/mate
         <div class="pull-right">
             $if session['user'] == None:
                 <a href="/login" class="btn btn-link waves-effect">Login</a>
-                <a href="/register" class="btn btn-secondary active waves-effect">Register</a>
+                <a href="/signup" class="btn btn-secondary active waves-effect">Signup</a>
             $else:
                 <a id="logout-link" class="btn btn-raised btn-default waves-effect">Logout</a>
 

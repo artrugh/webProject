@@ -2,12 +2,13 @@ $(document).ready(function () {
   console.log("loaded");
   $.material.init();
   console.log("loaded");
-  $(document).on("submit", "#register-form", function (e) {
+  $(document).on("submit", "#signup-form", function (e) {
     e.preventDefault();
 
-    var form = $("#register-form").serialize();
+    var form = $("#signup-form").serialize();
+
     $.ajax({
-      url: "/signup",
+      url: "/sumbmit-signup",
       type: "POST",
       data: form,
       success: function (response) {
