@@ -10,22 +10,25 @@ urls = (
     "/register", "Register",
     "/login", "Login",
     "/logout", "Logout",
-    "/post", "PostRegistration",
+    "/signup", "SignUp",
     "/check-login", "CheckLogin",
     "/post-activity", "PostActivity",
 )
 app = web.application(urls, globals())
-session = web.session.Session(app, web.session.DiskStore("sessions"), initializer={'user': None})
+session = web.session.Session(app, web.session.DiskStore(
+    "sessions"), initializer={'user': None})
 session_data = session._initializer
 
-render = web.template.render("Views/Templates", base="MainLayout", globals={'session': session_data, 'current_user': session_data["user"]})
+render = web.template.render("Views/Templates", base="MainLayout", globals={
+                             'session': session_data, 'current_user': session_data["user"]})
 
 
 # Classes/routes
 
 class Home:
     def GET(self):
-        data = type('obj', (object,), {"username": "qazi1", "password": "doubledoor"})
+        data = type('obj', (object,), {
+                    "username": "qazi1", "password": "doubledoor"})
 
         login = LogiModel.LoginModel()
         isCorrect = login.check_user(data)
@@ -49,7 +52,7 @@ class Login:
         return render.Login()
 
 
-class PostRegistration:
+class SignUp:
     def POST(self):
         data = web.input()
         reg_model = RegisterModel.RegisterModelCls()

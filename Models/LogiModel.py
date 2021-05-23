@@ -1,4 +1,4 @@
-import pymongo, bcrypt
+import bcrypt
 from pymongo import MongoClient
 
 

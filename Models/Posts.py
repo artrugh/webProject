@@ -1,4 +1,3 @@
-import pymongo, bcrypt
 from pymongo import MongoClient
 
 
@@ -10,7 +9,8 @@ class Posts:
         self.Posts = self.db.posts
 
     def insert_post(self, data):
-        inserted = self.Posts.insert({"username": data.username, "content": data.content})
+        inserted = self.Posts.insert(
+            {"username": data.username, "content": data.content})
         return True
 
     def get_all_posts(self):
@@ -22,4 +22,3 @@ class Posts:
             new_posts.append(post)
 
         return new_posts
-
