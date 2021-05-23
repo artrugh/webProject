@@ -1,6 +1,6 @@
 import web
 from Models import SignupModel
-from Models import LogiModel
+from Models import LoginModel
 from Models import Posts
 
 web.config.debug = False
@@ -10,11 +10,11 @@ urls = (
     "/", "Home",
     "/signup", "SignUp",
     "/login", "Login",
-    "/logout", "Logout",
 
     # apis
     "/api/signup", "ControllerSignUp",
     "/api/login", "ControllerLogin",
+    "/api/logout", "ControllerLogout",
     "/post-activity", "PostActivity",
 )
 app = web.application(urls, globals())
@@ -30,14 +30,14 @@ render = web.template.render("Views/Templates", base="MainLayout", globals={
 
 class Home:
     def GET(self):
-        data = type('obj', (object,), {
-                    "username": "qazi1", "password": "doubledoor"})
+        # data = type('obj', (object,), {
+        #             "username": "qazi1", "password": "doubledoor"})
 
-        login = LogiModel.LoginModel()
-        isCorrect = login.check_user(data)
+        # login = LoginModel.LoginModel()
+        # isCorrect = login.check_user(data)
 
-        if isCorrect:
-            session_data["user"] = isCorrect
+        # if isCorrect:
+        #     session_data["user"] = isCorrect
 
         post_model = Posts.Posts()
         posts = post_model.get_all_posts()
@@ -67,14 +67,15 @@ class ControllerSignUp:
 class ControllerLogin:
     def POST(self):
         data = web.input()
-        login = LogiModel.LoginModel()
-        isCorrect = login.check_user(data)
+        login = LoginModel.LoginModel()
+        user = login.check_user(data)
+        print('user', user['username'])
 
-        if isCorrect:
-            session_data["user"] = isCorrect
-            return isCorrect
+        if user == False:
+            return "error"
 
-        return "error"
+        session_data["user"] = user
+        return user
 
 
 class PostActivity:
@@ -87,7 +88,7 @@ class PostActivity:
         return "success"
 
 
-class Logout:
+class ControllerLogout:
     def GET(self):
         session['user'] = None
         session_data['user'] = None

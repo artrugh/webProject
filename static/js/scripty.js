@@ -46,13 +46,13 @@ $(document).ready(function () {
   $(document).on("click", "#logout-link", function (e) {
     e.preventDefault();
     $.ajax({
-      url: "/logout",
+      url: "/api/logout",
       type: "GET",
       success: function (res) {
         if (res == "success") {
           window.location.href = "/login";
         } else {
-          alert("Something went wrong! ");
+          alert("Something went wrong!");
         }
       },
     });

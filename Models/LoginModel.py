@@ -9,7 +9,9 @@ class LoginModel:
         self.Users = self.db.users
 
     def check_user(self, data):
-        user = self.Users.find_one({"username": data.username})
+        user = self.Users.find_one({"email": data['email']})
+
+        print('user', user)
 
         if user:
             if bcrypt.checkpw(data.password.encode(), user["password"]):
