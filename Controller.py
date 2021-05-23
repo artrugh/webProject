@@ -1,7 +1,5 @@
 import web
-from Models import SignupModel
-from Models import LoginModel
-from Models import Posts
+from Models import SignupModel, LoginModel, Posts
 
 web.config.debug = False
 
@@ -15,7 +13,7 @@ urls = (
     "/api/signup", "ControllerSignUp",
     "/api/login", "ControllerLogin",
     "/api/logout", "ControllerLogout",
-    "/post-activity", "PostActivity",
+    "/api/post-activity", "PostActivity",
 )
 app = web.application(urls, globals())
 session = web.session.Session(app, web.session.DiskStore(

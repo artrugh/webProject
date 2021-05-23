@@ -9,6 +9,8 @@ class Posts:
         self.Posts = self.db.posts
 
     def insert_post(self, data):
+        if data['content'] == '':
+            return
         inserted = self.Posts.insert(
             {"username": data.username, "content": data.content})
         return True

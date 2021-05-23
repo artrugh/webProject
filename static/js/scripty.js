@@ -62,7 +62,7 @@ $(document).ready(function () {
     e.preventDefault();
     form = $(this).serialize();
     $.ajax({
-      url: "/post-activity",
+      url: "/api/post-activity",
       type: "POST",
       data: form,
       success: function (res) {
