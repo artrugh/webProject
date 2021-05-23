@@ -11,7 +11,7 @@ $(document).ready(function () {
       type: "POST",
       data: form,
       success: function (response) {
-        if (response === "error") alert("missed user data");
+        if (response) alert(response);
         else {
           window.location.href = "/";
         }

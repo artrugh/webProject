@@ -57,7 +57,7 @@ class SignUp:
         data = web.input()
         reg_model = RegisterModel.RegisterModelCls()
         res = reg_model.insert_user(data)
-        if res == 'error':
+        if res:
             return res
         return data.username
 

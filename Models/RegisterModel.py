@@ -11,8 +11,12 @@ class RegisterModelCls:
     def insert_user(self, data):
 
         if data['username'] == "" or data['password'] == "" or data['email'] == "":
-            print("missed data")
-            return 'error'
+            return 'missed data'
+
+        user = self.Users.find_one({"email": data.email})
+
+        if user:
+            return 'user already exists'
 
         hashed = bcrypt.hashpw(data.password.encode(), bcrypt.gensalt())
 
