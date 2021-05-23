@@ -1,5 +1,6 @@
 from pymongo import MongoClient
 import bcrypt
+import json
 
 
 class SignupModelCls:
@@ -11,12 +12,12 @@ class SignupModelCls:
     def insert_user(self, data):
 
         if data['username'] == "" or data['password'] == "" or data['email'] == "":
-            return 'missed data'
+            return json.dumps({"error": True, "msg": "missed data"})
 
         user = self.Users.find_one({"email": data.email})
 
         if user:
-            return 'user already exists'
+            return json.dumps({"error": True, "msg": "user already exists"})
 
         hashed = bcrypt.hashpw(data.password.encode(), bcrypt.gensalt())
 
@@ -25,5 +26,6 @@ class SignupModelCls:
         print("Uid is: ", id)
         myuser = self.Users.find_one({"username": data.username})
 
-        if bcrypt.checkpw("avocado1".encode(), myuser["password"]):
+        if bcrypt.checkpw(data['password'].encode(), myuser["password"]):
             print("this matches")
+            return json.dumps({"username": data.username})

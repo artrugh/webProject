@@ -8,13 +8,17 @@ $(document).ready(function () {
     var form = $("#signup-form").serialize();
 
     $.ajax({
-      url: "/sumbmit-signup",
+      url: "/api/signup",
       type: "POST",
       data: form,
       success: function (response) {
-        if (response) alert(response);
-        else {
-          window.location.href = "/";
+        if (response) {
+          res = JSON.parse(response);
+          if (res.error) {
+            alert(res.msg);
+          } else {
+            window.location.href = "/";
+          }
         }
       },
     });
@@ -25,7 +29,7 @@ $(document).ready(function () {
 
     var form = $(this).serialize();
     $.ajax({
-      url: "/check-login",
+      url: "/api/login",
       type: "POST",
       data: form,
       success: function (res) {

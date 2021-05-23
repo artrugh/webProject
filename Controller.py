@@ -13,8 +13,8 @@ urls = (
     "/logout", "Logout",
 
     # apis
-    "/sumbmit-signup", "SubmitSignUp",
-    "/check-login", "CheckLogin",
+    "/api/signup", "ControllerSignUp",
+    "/api/login", "ControllerLogin",
     "/post-activity", "PostActivity",
 )
 app = web.application(urls, globals())
@@ -55,17 +55,16 @@ class Login:
         return render.Login()
 
 
-class SubmitSignUp:
+class ControllerSignUp:
     def POST(self):
         data = web.input()
         reg_model = SignupModel.SignupModelCls()
         res = reg_model.insert_user(data)
-        if res:
+        if res != None:
             return res
-        return data.username
 
 
-class CheckLogin:
+class ControllerLogin:
     def POST(self):
         data = web.input()
         login = LogiModel.LoginModel()
