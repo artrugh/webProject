@@ -94,8 +94,8 @@ class ControllerLogout:
 class PostActivity:
     def POST(self):
         data = web.input()
-        data.username = session_data['user']['username']
-
+        data['username'] = session_data['user']['username']
+        data["_id"] = session_data['user']['_id']
         post_model = Posts.Posts()
         post_model.insert_post(data)
         return "success"
@@ -157,7 +157,6 @@ class ControllerUpdateUserSettings:
         data['email'] = session_data["user"]['email']
 
         res = setting_model.update_info(data)
-        print("res", res)
 
         if res:
             session_data["user"]['username'] = data['username']

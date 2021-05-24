@@ -65,8 +65,8 @@ $(document).ready(function () {
       url: "/api/post-activity",
       type: "POST",
       data: form,
-      success: function (res) {
-        console.log(res);
+      success: function (_) {
+        window.location.href = window.location.href;
       },
     });
   });
