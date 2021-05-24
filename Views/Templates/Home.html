@@ -45,15 +45,16 @@ $def with (posts)
                 </div>
 
                 <div class="comments">
-
-                  <div class="comment">
-                    <div class="header">
-                      <div class="avatar"></div>
-                      <span class="comment-timestamp pull-right">Posted $post['timestamp']</span>
-                      <a class='d-block' href="/profile/$session['user']['username']">$post['user']['username']</a>
-                      <span class="timestamp">$post['content']</span>
+                  
+                  $for comment in post["comments"]:
+                    <div class="comment">
+                      <div class="header">
+                        <div class="avatar"></div>
+                        <span class="comment-timestamp pull-right">Posted $comment['timestamp']</span>
+                        <a class='d-block' href="/profile/$comment['user']['username']">$comment['user']['username']</a>
+                        <span class="timestamp">$comment['content']</span>
+                      </div>
                     </div>
-                  </div>
 
                   <div class="comment-add">
                     <div class="header">

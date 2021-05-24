@@ -1,5 +1,6 @@
 import web
 from Models import SignupModel, LoginModel, Posts
+import json
 
 web.config.debug = False
 
@@ -35,13 +36,13 @@ class Home:
     def GET(self):
 
         # auto-login
-        data = {"email": "nick@nick.com", "password": "nick"}
+        # data = {"email": "nick@nick.com", "password": "nick"}
 
-        login = LoginModel.LoginModel()
-        user = login.check_user(data)
+        # login = LoginModel.LoginModel()
+        # user = login.check_user(data)
 
-        if user:
-            session_data["user"] = user
+        # if user:
+        #     session_data["user"] = user
 
         post_model = Posts.Posts()
         posts = post_model.get_all_posts()
@@ -64,8 +65,14 @@ class ControllerSignUp:
         data = web.input()
         reg_model = SignupModel.SignupModelCls()
         res = reg_model.insert_user(data)
-        if res != None:
-            return res
+
+        if res["error"] == False:
+            session_data["user"] = res["user"]
+            print("seccion-user", session_data["user"])
+            return "success"
+
+        if res["error"] == True:
+            return json.dumps(res)
 
 
 class ControllerLogin:
@@ -102,18 +109,18 @@ class PostActivity:
 class UserProfile:
     def GET(self, user):
         # auto-login
-        data = {"email": "nick@nick.com", "password": "nick"}
+        # data = {"email": "nick@nick.com", "password": "nick"}
 
-        login = LoginModel.LoginModel()
-        user = login.check_user(data)
+        # login = LoginModel.LoginModel()
+        # user = login.check_user(data)
 
-        if user:
-            session_data["user"] = user
+        # if user:
+        #     session_data["user"] = user
 
         post_model = Posts.Posts()
         posts = post_model.get_user_posts(user)
 
-        user_info = login.get_profile(user)
+        user_info = session_data["user"]
 
         return render.Profile(posts, user_info)
 
@@ -121,29 +128,28 @@ class UserProfile:
 class UserInfo:
     def GET(self, user):
         # auto-login
-        data = {"email": "nick@nick.com", "password": "nick"}
+        # data = {"email": "nick@nick.com", "password": "nick"}
 
-        login = LoginModel.LoginModel()
-        user = login.check_user(data)
+        # login = LoginModel.LoginModel()
+        # user = login.check_user(data)
 
-        if user:
-            session_data["user"] = user
+        # if user:
+        #     session_data["user"] = user
+        # user_info = login.get_profile(user)
 
-        user_info = login.get_profile(user)
-
-        return render.Info(user_info)
+        return render.Info(session_data["user"])
 
 
 class UserSetttings:
     def GET(self):
         # auto-login
-        data = {"email": "nick@nick.com", "password": "nick"}
+        # data = {"email": "nick@nick.com", "password": "nick"}
 
-        login = LoginModel.LoginModel()
-        user = login.check_user(data)
+        # login = LoginModel.LoginModel()
+        # user = login.check_user(data)
 
-        if user:
-            session_data["user"] = user
+        # if user:
+        #     session_data["user"] = user
         return render.Settings()
 
 
@@ -174,7 +180,7 @@ class ControllerAddComment:
         if added_comment:
             return added_comment
 
-        return {"error": "403"}
+        return False
 
 
 if __name__ == "__main__":

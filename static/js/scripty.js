@@ -4,7 +4,6 @@ $(document).ready(function () {
   console.log("loaded");
   $(document).on("submit", "#signup-form", function (e) {
     e.preventDefault();
-
     var form = $("#signup-form").serialize();
 
     $.ajax({
@@ -13,11 +12,11 @@ $(document).ready(function () {
       data: form,
       success: function (response) {
         if (response) {
-          res = JSON.parse(response);
-          if (res.error) {
-            alert(res.msg);
-          } else {
+          if (response === "success") {
             window.location.href = "/";
+          } else {
+            res = JSON.parse(response);
+            alert(res.msg);
           }
         }
       },
@@ -98,10 +97,10 @@ $(document).ready(function () {
       data: form,
       success: function (res) {
         console.log("res", res);
-        if (res === "success") {
-          window.location.href = window.location.href;
+        if (!res) {
+          alert("An error occurred!");
         } else {
-          alert(res);
+          window.location.href = window.location.href;
         }
       },
     });

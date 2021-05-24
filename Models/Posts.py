@@ -16,7 +16,7 @@ class Posts:
         if data['content'] == '':
             return
         self.Posts.insert(
-            {"username": data.username, "content": data.content, "user-id": data._id, 'created_at': datetime.datetime.now()})
+            {"username": data.username, "content": data.content, "user_id": data._id, 'created_at': datetime.datetime.now()})
         return True
 
     def get_all_posts(self):
@@ -24,25 +24,38 @@ class Posts:
         new_posts = []
 
         for post in all_posts:
-            post["user"] = self.Users.find_one({"_id": post["user-id"]})
+            post["user"] = self.Users.find_one({"_id": post["user_id"]})
             post["timestamp"] = humanize.naturaltime(
                 datetime.datetime.now() - post['created_at'])
+            comments = self.Comments.find(
+                {"post_id": str(post["_id"])})
+            post["old_comments"] = comments
+            post["comments"] = []
+
+            for comment in post["old_comments"]:
+                comment['user'] = self.Users.find_one(
+                    {"_id": comment["user_id"]})
+                comment["timestamp"] = humanize.naturaltime(
+                    datetime.datetime.now() - comment['created_at'])
+                post["comments"].append(comment)
+
             new_posts.append(post)
 
         return new_posts
 
     def get_user_posts(self, user):
         all_posts = self.Posts.find(
-            {"user-id":  user["_id"]}).sort("date-added", -1)
+            {"user_id":  user["_id"]}).sort("created_at", -1)
         new_posts = []
 
         for post in all_posts:
-            post["user"] = self.Users.find_one({"_id": post["user-id"]})
+            post["user"] = self.Users.find_one({"_id": post["user_id"]})
             new_posts.append(post)
 
         return new_posts
 
     def add_comment(self, data):
+
         if data['comment-content'] == '':
             return False
         inserted_comment = self.Comments.insert_one(
