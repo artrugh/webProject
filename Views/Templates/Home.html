@@ -31,7 +31,8 @@ $def with (posts)
             <div class="post-card">
               <div class="header">
                 <div class="avatar">
-                  <a href="/profile/$session['user']['username']">$post['user']['username']</a>
+                  <a class='d-block' href="/profile/$session['user']['username']">$post['user']['username']</a>
+                  <span class="timestamp">$post['timestamp']</span>
                 </div>
 
                 <div class="content">
@@ -42,7 +43,32 @@ $def with (posts)
                   <button class="btn btn-round waves-effect btn-default btn-raised btn-like"><span class="mdi mdi-comment-text-outline"></span></button>
                   <button class="btn btn-round waves-effect btn-default btn-raised btn-like"><span class="mdi mdi-share"></span></button>
                 </div>
+
+                <div class="comments">
+
+                  <div class="comment">
+                    <div class="header">
+                      <div class="avatar"></div>
+                      <span class="comment-timestamp pull-right">Posted $post['timestamp']</span>
+                      <a class='d-block' href="/profile/$session['user']['username']">$post['user']['username']</a>
+                      <span class="timestamp">$post['content']</span>
+                    </div>
+                  </div>
+
+                  <div class="comment-add">
+                    <div class="header">
+                      <div class="avatar"></div>
+                      <form id="comment-form">
+                        <input id="post_id" name="post_id" class="hidden" value="$post['_id']" />
+                        <textarea name="comment-content" class="form-control" placeholder="Write a comment, $session['user']['username']?"></textarea>
+                        <button type="submit" id="comment-button" class="btn btn-info btn-raised waves-effect btn-sm pull-right">Add Comment</button>
+                      </form>
+                    </div>
+                  </div>
+                </div>
+                   
               </div>
+            </div>
           </div>
         </div>
       </div>

@@ -17,10 +17,8 @@ urls = (
     "/api/login", "ControllerLogin",
     "/api/logout", "ControllerLogout",
     "/api/post-activity", "PostActivity",
-
-
-
     "/api/update-settings", "ControllerUpdateUserSettings",
+    "/api/add-comment", "ControllerAddComment"
 )
 app = web.application(urls, globals())
 session = web.session.Session(app, web.session.DiskStore(
@@ -163,6 +161,20 @@ class ControllerUpdateUserSettings:
             return 'success'
         else:
             return 'A fatal error has occured.'
+
+
+class ControllerAddComment:
+    def POST(self):
+        comment = web.input()
+        comment['user_id'] = session_data["user"]['_id']
+
+        post_model = Posts.Posts()
+        added_comment = post_model.add_comment(comment)
+
+        if added_comment:
+            return added_comment
+
+        return {"error": "403"}
 
 
 if __name__ == "__main__":
