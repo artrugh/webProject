@@ -18,3 +18,14 @@ class LoginModel:
                 return False
         else:
             return False
+
+    def update_info(self, data):
+        self.Users.update_one({'email': data['email']}, {
+            "$set": data
+        })
+
+        return True
+
+    def get_profile(self, user):
+        user_info = self.Users.find_one({"email": user['email']})
+        return user_info

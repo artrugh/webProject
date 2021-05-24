@@ -14,49 +14,49 @@ $var js: static/js/jquery-3.6.0.min.js static/js/bootstrap.min.js static/js/mate
 
 </head>
 <body>
-<div id="app">
-    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-    <a class="navbar-brand" >CodeWizard</a>
+    <div id="app">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+        <a class="navbar-brand" >CodeWizard</a>
 
-    <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
-        <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-            <li class="nav-item ">
-                <a class="nav-link" href="/">Home Feed </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="/discover">Discover</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="/profile">Profile</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="/settings">Settings</a>
-            </li>
+        <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
+            <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+                <li class="nav-item ">
+                    <a class="nav-link" href="/">Home Feed </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/discover">Discover</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/profile">Profile</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/settings">Settings</a>
+                </li>
 
 
-        </ul>
-        <div class="pull-right">
-            $if session['user'] == None:
-                <a href="/login" class="btn btn-link waves-effect">Login</a>
-                <a href="/signup" class="btn btn-secondary active waves-effect">Signup</a>
-            $else:
-                <a id="logout-link" class="btn btn-raised btn-default waves-effect">Logout</a>
+            </ul>
+            <div class="pull-right">
+                $if session['user'] == None:
+                    <a href="/login" class="btn btn-link waves-effect">Login</a>
+                    <a href="/signup" class="btn btn-secondary active waves-effect">Signup</a>
+                $else:
+                    <a id="logout-link" class="btn btn-raised btn-default waves-effect">Logout</a>
+
+            </div>
 
         </div>
+        </nav>
 
-    </div>
-    </nav>
+        <br /><br /><br />
+        $:page
+        </div>
 
-    <br /><br /><br />
-    $:page
-    </div>
-
-$if self.js:
-    $for script in self.js.split():
-        <script src="$script"></script>
+    $if self.js:
+        $for script in self.js.split():
+            <script src="$script"></script>
 
 </body>
 </html>

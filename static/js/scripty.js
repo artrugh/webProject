@@ -70,4 +70,22 @@ $(document).ready(function () {
       },
     });
   });
+
+  $(document).on("submit", "#setting-form", function (e) {
+    e.preventDefault();
+    form = $(this).serialize();
+    $.ajax({
+      url: "/api/update-settings",
+      type: "POST",
+      data: form,
+      success: function (res) {
+        console.log("res", res);
+        if (res === "success") {
+          window.location.href = window.location.href;
+        } else {
+          alert(res);
+        }
+      },
+    });
+  });
 });

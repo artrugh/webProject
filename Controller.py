@@ -8,12 +8,19 @@ urls = (
     "/", "Home",
     "/signup", "SignUp",
     "/login", "Login",
+    "/profile/(.*)", "UserInfo",
+    "/settings", "UserSetttings",
+    "/profile/(.*)", "UserProfile",
 
     # apis
     "/api/signup", "ControllerSignUp",
     "/api/login", "ControllerLogin",
     "/api/logout", "ControllerLogout",
     "/api/post-activity", "PostActivity",
+
+
+
+    "/api/update-settings", "ControllerUpdateUserSettings",
 )
 app = web.application(urls, globals())
 session = web.session.Session(app, web.session.DiskStore(
@@ -76,6 +83,14 @@ class ControllerLogin:
         return user
 
 
+class ControllerLogout:
+    def GET(self):
+        session['user'] = None
+        session_data['user'] = None
+        session.kill()
+        return "success"
+
+
 class PostActivity:
     def POST(self):
         data = web.input()
@@ -86,12 +101,69 @@ class PostActivity:
         return "success"
 
 
-class ControllerLogout:
+class UserProfile:
+    def GET(self, user):
+        # auto-login
+        data = {"email": "nick@nick.com", "password": "nick"}
+
+        login = LoginModel.LoginModel()
+        user = login.check_user(data)
+
+        if user:
+            session_data["user"] = user
+
+        post_model = Posts.Posts()
+        posts = post_model.get_user_posts(user)
+
+        user_info = login.get_profile(user)
+
+        return render.Profile(posts, user_info)
+
+
+class UserInfo:
+    def GET(self, user):
+        # auto-login
+        data = {"email": "nick@nick.com", "password": "nick"}
+
+        login = LoginModel.LoginModel()
+        user = login.check_user(data)
+
+        if user:
+            session_data["user"] = user
+
+        user_info = login.get_profile(user)
+
+        return render.Info(user_info)
+
+
+class UserSetttings:
     def GET(self):
-        session['user'] = None
-        session_data['user'] = None
-        session.kill()
-        return "success"
+        # auto-login
+        data = {"email": "nick@nick.com", "password": "nick"}
+
+        login = LoginModel.LoginModel()
+        user = login.check_user(data)
+
+        if user:
+            session_data["user"] = user
+        return render.Settings()
+
+
+class ControllerUpdateUserSettings:
+    def POST(self):
+        data = web.input()
+
+        setting_model = LoginModel.LoginModel()
+        data['email'] = session_data["user"]['email']
+
+        res = setting_model.update_info(data)
+        print("res", res)
+
+        if res:
+            session_data["user"]['username'] = data['username']
+            return 'success'
+        else:
+            return 'A fatal error has occured.'
 
 
 if __name__ == "__main__":

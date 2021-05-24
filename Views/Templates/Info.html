@@ -1,0 +1,60 @@
+$def with (user_info)
+
+<div class='container'>
+  <div class='row'>
+    <ul class="sidebar">
+      <li><a href="/"><span class="mdi mdi-home"></span>Home Feed</a></li>
+      <li><a href="/profile/$user_info['username']"><span class="mdi mdi-account-circle"></span>Profile</a></li>
+      <li><a href="#"><span class="mdi mdi-email"></span>Messages</a></li>
+      <li><a href="#"><span class="mdi mdi-google-circles-group"></span>Friends</a></li>
+      <li><a href="#"><span class="mdi mdi-google-circles-communities"></span>Communities</a></li>
+      <li><a href="#"><span class="mdi mdi-bell"></span>Notifications</a></li>
+      <li class="separator list-unstyled"></li>
+      <li><a href="/settings"><span class="mdi mdi-settings"></span>Settings</a></li>
+      <li> <a href="#"><span class="mdi mdi-help-circle"></span>Help</a></li>
+    </ul>
+    <div class="col-md-12">
+      <div class="profile-header">
+        <div class="background-image" style="background:url('static/img/background.img');">
+            <img class="avatar">
+              <img src="/static/img/nick.jpg" class="profile-avatar"></img>
+              <h2 class="profile-name">$user_info['username']</h2>
+              <span class="profile-header">Lv. 64 Programmer</span>
+            </div>
+        </div>
+        <div class='profile-nav'>
+          <ul class="nav navbar-nav navbar-center">
+            <li><a href="/profile/$user_info['username']">Activity</a></li>
+            <li><a href="/profile/$user_info['username']/info">Info</a></li>
+            <li><a href="/profile/$user_info['username']/code">Code</a></li>
+            <li><a href="/profile/$user_info['username']/contact">Contact</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class='row'>
+    <div class="col-md-12">
+      <div class="grid">
+        <div class="grid-sizer"></div>
+        <div class="post-card extra-padding">
+          <div id="user-info">
+            <h2 class="post-title">Basic Information</h2>
+            <span class="post-subtitle">Name</span>
+            <!-- <p><input id="username" name="username" class="form-control no-border" type="text" value="$session['user']['username']" /></p> -->
+            <p>$user_info['username']</p>
+            <span class="post-subtitle">About</span>
+            <!-- <p><textarea name="about" class="form-control no-border">$user_info['about']</textarea></p> -->
+            <p>$user_info['about']</p>
+            <span class="post-subtitle">Hobbies</span>
+            <!-- <p><input id="hobbies" name="hobbies" class="form-control no-border" type="text" value="$user_info['hobbies']" /></p> -->
+            <p>$user_info['hobbies']</p>
+            <span class="post-subtitle">Birthday</span>
+            <!-- <p><input id="birthday" name="birthday" class="form-control no-border" type="text" value="$user_info['birthday']" /></p> -->
+            <p>$user_info['birthday']</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
