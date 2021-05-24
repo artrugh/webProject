@@ -1,4 +1,6 @@
 $def with (posts, user_info)
+$var main_avatar: $session['user']['avatar']
+$var main_background: $user_info['user']['background']
 
 <div class="container">
     <div class="row">
@@ -15,9 +17,9 @@ $def with (posts, user_info)
       </ul>
       <div class="col-md-12">
         <div class="profile-header">
-          <div class="background-image" style="background:url('static/img/background.img');">
+          <div class="background-image" style="background:url(/$self.main_background);">
               <div class="avatar">
-                <img src="/static/img/nick.jpg" class="profile-avatar"/>
+                <img src="$user_info['avatar']" class="profile-avatar"/>
                 <h2 class="profile-name">$user_info['username']</h2>
                 <span class="profile-header">Lv. 64 Programmer</span>
               </div>
@@ -38,8 +40,8 @@ $def with (posts, user_info)
 
         <div class="post-card">
           <div class="header">
-            <div class="avatar">
-              <a href="/profile">$post['username']</a>
+            <div class="avatar" style="background:url(/$post['user']['avatar']);">
+              <a href="/profile/$post['username']">$post['username']</a>
             </div>
 
             <div class="content">

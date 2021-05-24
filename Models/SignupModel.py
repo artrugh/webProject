@@ -21,7 +21,7 @@ class SignupModelCls:
         hashed = bcrypt.hashpw(data.password.encode(), bcrypt.gensalt())
 
         id = self.Users.insert(
-            {"username": data.username, "password": hashed, "email": data.email, "about": '', "hobbies": '', "birthday": ""})
+            {"username": data.username, "password": hashed, "email": data.email, "about": '', "hobbies": '', "birthday": "", "avatar": "", "background": ""})
 
         myuser = self.Users.find_one({"_id": id})
 

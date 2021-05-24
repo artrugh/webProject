@@ -1,3 +1,4 @@
+$var main_background: $session['user']['background']
 <div class='container'>
   <div class='row'>
     <ul class="sidebar">
@@ -13,9 +14,9 @@
     </ul>
     <div class="col-md-12">
       <div class="profile-header">
-        <div class="background-image" style="background:url('static/img/background.img');">
+        <div class="background-image" style="background:url($self.main_background);">
             <div class="avatar">
-              <img src="/static/img/nick.jpg" class="profile-avatar"/>
+              <img src="$session['user']['avatar']" class="profile-avatar"/>
               <h2 class="profile-name">$session['user']['username']</h2>
               <span class="profile-header">Lv. 64 Programmer</span>
             </div>
@@ -35,6 +36,7 @@
     <div class="col-md-12">
       <div class="grid">
         <div class="grid-sizer"></div>
+
         <div class="post-card extra-padding">
           <form id="setting-form">
             <h2 class="post-title">Basic Information</h2>
@@ -49,6 +51,28 @@
             <button type="submit" class="btn btn-info btn-raised waves-effect">Save</button>
           </form>
         </div>
+
+
+        <div class="post-card extra-padding">
+          <h2 class="post-title">Professional</h2>
+          <span class="post-subtitle">Point Bracket <i>2021-2021</i></span>
+          <p>I write awesome code for a living</p>
+        </div>
+
+        <div class="post-card extra-padding">  
+          <h2 class="post-title">Images</h2>
+          <span class="post-subtitle">Avatar</span>
+          <form id="avatar-upload" >
+            <input name="avatar" type="file" />
+            <button type="submit" class="btn btn-info btn-raised waves-effect">Save</button>
+          </form>
+          <span class="form-post-subtitle">Background Image</span>
+          <form id="background-upload" method="post" enctype="multipart/form-data" action="/api/upload-image/background">
+            <input name="background" type="file" />
+            <button type="submit" class="btn btn-info btn-raised waves-effect">Save</button>
+          </form>
+        </div>
+        
       </div>
     </div>
   </div>

@@ -29,3 +29,10 @@ class LoginModel:
     def get_profile(self, user):
         user_info = self.Users.find_one({"email": user['email']})
         return user_info
+
+    def update_img(self, data):
+        updated = self.Users.update_one({'_id': data['user_id']}, {
+            "$set": {data["type"]: data["img"]}
+        })
+
+        return updated

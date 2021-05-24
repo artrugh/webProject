@@ -1,4 +1,5 @@
 $def with (user_info)
+$var main_background: $session['user']['background']
 
 <div class='container'>
   <div class='row'>
@@ -15,9 +16,9 @@ $def with (user_info)
     </ul>
     <div class="col-md-12">
       <div class="profile-header">
-        <div class="background-image" style="background:url('static/img/background.img');">
+        <div class="background-image" style="background:url($self.main_background);">
             <img class="avatar">
-              <img src="/static/img/nick.jpg" class="profile-avatar"></img>
+              <img src="$session['user']['avatar']" class="profile-avatar"></img>
               <h2 class="profile-name">$user_info['username']</h2>
               <span class="profile-header">Lv. 64 Programmer</span>
             </div>

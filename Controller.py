@@ -1,6 +1,7 @@
 import web
 from Models import SignupModel, LoginModel, Posts
 import json
+import os
 
 web.config.debug = False
 
@@ -20,6 +21,7 @@ urls = (
     "/api/post-activity", "PostActivity",
     "/api/update-settings", "ControllerUpdateUserSettings",
     "/api/add-comment", "ControllerAddComment"
+    "/api/upload-image/(.*)", "ControllerUploadImage"
 )
 app = web.application(urls, globals())
 session = web.session.Session(app, web.session.DiskStore(
@@ -36,13 +38,13 @@ class Home:
     def GET(self):
 
         # auto-login
-        # data = {"email": "nick@nick.com", "password": "nick"}
+        data = {"email": "nick@nick.com", "password": "nick"}
 
-        # login = LoginModel.LoginModel()
-        # user = login.check_user(data)
+        login = LoginModel.LoginModel()
+        user = login.check_user(data)
 
-        # if user:
-        #     session_data["user"] = user
+        if user:
+            session_data["user"] = user
 
         post_model = Posts.Posts()
         posts = post_model.get_all_posts()
@@ -68,7 +70,6 @@ class ControllerSignUp:
 
         if res["error"] == False:
             session_data["user"] = res["user"]
-            print("seccion-user", session_data["user"])
             return "success"
 
         if res["error"] == True:
@@ -181,6 +182,37 @@ class ControllerAddComment:
             return added_comment
 
         return False
+
+
+class ControllerUploadImage:
+    def POST(self, type):
+
+        file = web.input(avatar={}, background={})
+
+        file_dir = os.getcwd() + "/static/uploads/" + \
+            session_data["user"]["_id"]
+
+        if not os.path.exists(file_dir):
+            os.mkdir(file_dir)
+
+        if "avatar" or "background" in file:
+            filepath = file[type]["filename"].replace('\\', '/')
+            filename = filepath.split("/")[-1]
+            f = open(file_dir + "/" + filename, 'wb')
+            f.write(file[type]['file'].read())
+            f.close()
+            update = {}
+            update["type"] = type
+            print("update", update)
+            update["img"] = '/static/uploads/' + \
+                session_data['user']["_id"] + "/" + filename
+            print("update", update)
+            update["user_id"] = session_data['user']["_id"]
+
+            login = LoginModel.LoginModel()
+            login.update_img(update)
+
+        raise web.seeother("/settings")
 
 
 if __name__ == "__main__":
