@@ -15,13 +15,15 @@ urls = (
     "/profile/(.*)", "UserProfile",
 
     # apis
+
     "/api/signup", "ControllerSignUp",
     "/api/login", "ControllerLogin",
     "/api/logout", "ControllerLogout",
     "/api/post-activity", "PostActivity",
     "/api/update-settings", "ControllerUpdateUserSettings",
-    "/api/add-comment", "ControllerAddComment"
+    "/api/add-comment", "ControllerAddComment",
     "/api/upload-image/(.*)", "ControllerUploadImage"
+
 )
 app = web.application(urls, globals())
 session = web.session.Session(app, web.session.DiskStore(
@@ -36,15 +38,6 @@ render = web.template.render("Views/Templates", base="MainLayout", globals={
 
 class Home:
     def GET(self):
-
-        # auto-login
-        data = {"email": "nick@nick.com", "password": "nick"}
-
-        login = LoginModel.LoginModel()
-        user = login.check_user(data)
-
-        if user:
-            session_data["user"] = user
 
         post_model = Posts.Posts()
         posts = post_model.get_all_posts()
@@ -109,14 +102,6 @@ class PostActivity:
 
 class UserProfile:
     def GET(self, user):
-        # auto-login
-        # data = {"email": "nick@nick.com", "password": "nick"}
-
-        # login = LoginModel.LoginModel()
-        # user = login.check_user(data)
-
-        # if user:
-        #     session_data["user"] = user
 
         post_model = Posts.Posts()
         posts = post_model.get_user_posts(user)
@@ -127,30 +112,14 @@ class UserProfile:
 
 
 class UserInfo:
-    def GET(self, user):
-        # auto-login
-        # data = {"email": "nick@nick.com", "password": "nick"}
-
-        # login = LoginModel.LoginModel()
-        # user = login.check_user(data)
-
-        # if user:
-        #     session_data["user"] = user
-        # user_info = login.get_profile(user)
+    def GET(self):
 
         return render.Info(session_data["user"])
 
 
 class UserSetttings:
     def GET(self):
-        # auto-login
-        # data = {"email": "nick@nick.com", "password": "nick"}
 
-        # login = LoginModel.LoginModel()
-        # user = login.check_user(data)
-
-        # if user:
-        #     session_data["user"] = user
         return render.Settings()
 
 
@@ -173,6 +142,7 @@ class ControllerUpdateUserSettings:
 class ControllerAddComment:
     def POST(self):
         comment = web.input()
+        print("comment", comment)
         comment['user_id'] = session_data["user"]['_id']
 
         post_model = Posts.Posts()
