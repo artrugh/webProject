@@ -189,8 +189,7 @@ class ControllerUploadImage:
 
         file = web.input(avatar={}, background={})
 
-        file_dir = os.getcwd() + "/static/uploads/" + \
-            session_data["user"]["_id"]
+        file_dir = os.getcwd() + "/static/uploads/"
 
         if not os.path.exists(file_dir):
             os.mkdir(file_dir)
@@ -204,8 +203,7 @@ class ControllerUploadImage:
             update = {}
             update["type"] = type
             print("update", update)
-            update["img"] = '/static/uploads/' + \
-                session_data['user']["_id"] + "/" + filename
+            update["img"] = '/static/uploads/' + filename
             print("update", update)
             update["user_id"] = session_data['user']["_id"]
 
